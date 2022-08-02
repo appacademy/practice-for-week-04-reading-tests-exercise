@@ -1,15 +1,16 @@
 const chai = require("chai");
 const expect = chai.expect;
-const { isFive, isOdd, myRange } = require("../funcs");
+const { isFive, isOdd, myRange } = require("../funcs"); // The functions imported for testing
 
-describe("isFive(num)", () => {
+describe("isFive(num)", () => { // Function isFive accepts one number as argument
   it("should return true if the num is 5 otherwise false", () => {
+    // Initial test case - expecting outcome to be true
     const num1 = 5;
-
+    // Pass in the variable into the imported function and assign (return value) to variable
     const actual1 = isFive(num1); // should be true
-
+    // check if the variable's value is true or false 
     expect(actual1).to.be.true;
-
+    // Other test cases - expecting outcomes to return false
     const otherInput = "not 5";
     const num2 = 4;
 
@@ -62,16 +63,20 @@ describe("isOdd(number)", () => {
 });
 
 describe("myRange(min, max, step)", () => {
-  context("if step is not provided", () => {
-    it("should return the correct array with default value step=1", () => {
+  context("if step is not provided", () => { // Condition of the test (similar to if statement)
+    it("should return the correct array with default value step=1", () => { // Returned statement if Condition is true
+      // Assign min1 and max1 to values in array using destructuring 
       const [min1, max1] = [0, 5];
       const [min2, max2] = [6, 3];
 
+      // Assign actual1 && actual2 to the code written by student
+      // Assign expected1 && expected2 to the return values that the test expects
       const actual1 = myRange(min1, max1);
       const expected1 = [0, 1, 2, 3, 4, 5];
       const actual2 = myRange(min2, max2);
       const expected2 = [];
 
+      // If expected1 and expected2 values === actual1 and actual2, the function is running properly
       expect(actual1).to.eql(expected1);
       expect(actual2).to.eql(expected2);
     });
@@ -96,3 +101,19 @@ describe("myRange(min, max, step)", () => {
     });
   });
 });
+
+/*
+** syntax and hierarchy of spec functions:
+** 
+** describe("testingFunc", function() {...});
+**   containing the specs
+** 
+** context() == describe(): context(context, function() {...});
+**   alias of describe(), allows a way to keep tests easier to read
+** 
+** it(case, function() {...});
+**   test case with logic (case) and expression (func)
+** 
+** specify(case, function() {...}) ;
+**   alias of it()
+*/
